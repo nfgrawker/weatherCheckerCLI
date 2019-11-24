@@ -6,9 +6,9 @@ from datetime import datetime
 
 
 def callWeather(
-        city="Minneapolis", country="us",
+    city="Minneapolis", country="us",
 ):
-    '''our api call, taking two arguments of city and country'''
+    """our api call, taking two arguments of city and country"""
     if type(city) == list:
         city = " ".join(city)
     response = requests.get(
@@ -23,7 +23,7 @@ def callWeather(
 
 
 def parse_dict(dictToParse):
-    '''This sets time to a readable string for our prograb as well as makes the data cleaner for our extraction'''
+    """This sets time to a readable string for our prograb as well as makes the data cleaner for our extraction"""
     dayTempDict = {}
     print(dictToParse.keys())
     for entry in dictToParse["list"]:
@@ -40,7 +40,7 @@ def parse_dict(dictToParse):
 
 
 def parse_values(tempDict):
-    '''This function will parse all values from our custom dictionary that we created from the API call'''
+    """This function will parse all values from our custom dictionary that we created from the API call"""
     found_media_for_day_flag = False
     for key in tempDict:
         found_media_for_day_flag = False
@@ -75,7 +75,9 @@ def parse_values(tempDict):
                     )
                     found_media_for_day_flag = True
         if found_media_for_day_flag == False:
-            dayChoices.append(f"Weather conditions do not match with any of our outreach methods for the day of {key}")
+            dayChoices.append(
+                f"Weather conditions do not match with any of our outreach methods for the day of {key}"
+            )
 
 
 if __name__ == "__main__":
